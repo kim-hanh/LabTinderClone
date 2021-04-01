@@ -4,8 +4,6 @@ var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var url = fs.writeFile()
-  // res.render('index', { title: 'Express' });
   res.render('index');
 });
 
