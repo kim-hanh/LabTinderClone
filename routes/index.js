@@ -274,7 +274,7 @@ router.get('/search', function (req, res, next) {
 
     userModel.find({name:req.query.search},function (error,userList) {
         if (!error){
-            res.render('user_list',{layout: 'main_home', users: userList,value:req.query.search});
+            res.render('user_list',{layout: 'main_home', users: userList, value:req.query.search});
         }else {
             res.render('user_list',{layout: 'main_home', message:error.message});
         }
