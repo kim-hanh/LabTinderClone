@@ -197,6 +197,7 @@ router.get('/messenger', function (req, res, next) {
         }
     });
 });
+
 router.get('/user.id=:id', function (req, res, next) {
     var userModel = db.model('users', userSchema);
 
@@ -279,13 +280,7 @@ router.get('/remove.id=:id', function (req, res, next) {
     userModel.findByIdAndRemove(req.params.id, function (error, user) {
         if (!error) {
 
-            userModel.find({}, function (error, userList) {
-                if (!error) {
-                    res.render('messenger', {layout: 'main_home', users: userList});
-                } else {
-                    res.render('messenger', {layout: 'main_home'});
-                }
-            });
+            res.redirect('/messenger');
         } else {
             res.send('ERROR: ' + error.message);
         }
