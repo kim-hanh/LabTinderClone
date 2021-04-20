@@ -265,7 +265,7 @@ router.post('/avatar.id=:id', upload, function (req, res, next) {
             //     }
             // });
 
-            //     res.render('info',{layout:'main_home', user: user, gender:user.gender, message:'Update successfully!'});
+            // res.render('info',{layout:'main_home', user: user, gender:user.gender, message:'Update successfully!'});
         } else {
             res.render('info', {layout: 'main_home', user: user, gender: user.gender, message: 'ERROR: ' + error.message
             });
@@ -274,10 +274,10 @@ router.post('/avatar.id=:id', upload, function (req, res, next) {
 
 });
 
-router.get('/remove.id=:id', function (req, res, next) {
+router.get('/delete.id=:id', function (req, res, next) {
     var userModel = db.model('users', userSchema);
 
-    userModel.findByIdAndRemove(req.params.id, function (error, user) {
+    userModel.deleteOne({_id:req.params.id}, function (error, user) {
         if (!error) {
 
             res.redirect('/messenger');
