@@ -252,7 +252,7 @@ router.post('/avatar.id=:id', upload, function (req, res, next) {
 
     var userModel = db.model('users', userSchema);
 
-    userModel.updateOne({_id: req.params.id}, {avatar: 'avatar-' + req.file.originalname}, function (error) {
+    userModel.updateOne({_id: req.params.id}, {avatar: 'avatar-'+req.file.originalname}, function (error) {
         if (!error) {
             res.redirect('user.id='+req.params.id);
 
@@ -267,8 +267,7 @@ router.post('/avatar.id=:id', upload, function (req, res, next) {
 
             // res.render('info',{layout:'main_home', user: user, gender:user.gender, message:'Update successfully!'});
         } else {
-            res.render('info', {layout: 'main_home', user: user, gender: user.gender, message: 'ERROR: ' + error.message
-            });
+            res.render('info', {layout: 'main_home', message: 'ERROR: ' + error.message});
         }
     });
 
