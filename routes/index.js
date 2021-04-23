@@ -5,7 +5,7 @@ var multer = require('multer')
 
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var uri_mongoose = "mongodb+srv://phunkimhanh:Hanh18042001@hanhcluster.winin.mongodb.net/Tinder?retryWrites=true&w=majority";
+var uri_mongoose = 'mongodb+srv://phungkimhanh:Hanh18042001@nodejscluster.winin.mongodb.net/TinderClone?retryWrites=true&w=majority';
 
 router.use(bodyParser.json());       // to support JSON-encoded bodies
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -15,7 +15,10 @@ mongoose.connect(uri_mongoose, {useNewUrlParser: true, useUnifiedTopology: true}
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
+    console.log('okok')
 });
+
+
 
 let baseJson = {
     errorCode: undefined,
